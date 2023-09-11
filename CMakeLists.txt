@@ -7,9 +7,8 @@ set(CMAKE_CXX_COMPILER /usr/bin/g++)
 
 set(CMAKE_C_FLAGS "-O2 -g -Wall -target bpf")
 
-include_directories(${PROJECT_SOURCE_DIR}/src)
+message(STATUS "CMAKE_BINARY_DIR : " ${CMAKE_BINARY_DIR})
 
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/library)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 add_subdirectory("src")
-
-add_executable(xdp_filter  "xdp_filter.cpp" )
-target_link_libraries(xdp_filter xdp_filter_user)
